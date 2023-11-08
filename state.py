@@ -6,19 +6,15 @@ import levels as level
 class State:
     def __init__(self, state):
         self.state = state
-        self.players = state[3]
-        self.grid = state[2]
         self.row = state[0]
         self.columns = state[1]
+        self.grid = state[2]
+        self.players = state[3]
         self.to_win = 0
 
     def start_state(self):
         # to Get the  grid from the user
-        # self.row, self.columns, self.grid, self.player = self.random_map()
-        self.row = level.Levels.num_rows_3
-        self.columns = level.Levels.num_columns_3
-        self.grid = level.Levels.level3_grid
-        self.players = level.Levels.level3_psp
+        self.random_map()
 
     # Getting the levels or map from the  player
     def random_map(self):
