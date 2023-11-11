@@ -1,7 +1,5 @@
 import copy
 
-import levels as level
-
 
 class State:
     def __init__(self, state):
@@ -10,7 +8,8 @@ class State:
         self.columns = state[1]
         self.grid = state[2]
         self.players = state[3]
-        self.to_win = 0
+        self.cost = 1
+        self.to_win = state[4]
 
     def start_state(self):
         # to Get the  grid from the user
@@ -24,7 +23,7 @@ class State:
         for i in range(0, self.row):
             for j in range(0, self.columns):
                 self.grid[i][j] = int(input())
-        number_of_player = int(input("Enter how many squeares player will be"))
+        number_of_player = int(input("Enter how many squares player will be"))
         for i in range(0, number_of_player):
             player_rows = int(input("Enter the Start point indexes for rows\n"))
             player_columns = int(input("Enter the Start point indexes for columns\n"))
@@ -38,7 +37,7 @@ class State:
                 if board[i][j] != 0 and board[i][j] != -1:
                     self.to_win += board[i][j]
 
-    def isfinal(self):
+    def isfinish(self):
         if self.to_win > 0:
             print("There should be", self.to_win, "moves To finish the game")
             return False
@@ -56,6 +55,7 @@ class State:
     # take the player that play and move
 
     def move(self, x, y, direction):
+        print("players list", self.players)
         player = self.players.index((x, y))
         to_move = (x + 1, y) if direction == 'D' \
             else (x - 1, y) if direction == 'U' \
@@ -66,8 +66,10 @@ class State:
         if to_move in cells:
             self.grid[to_move[0]][to_move[1]] -= 1
             self.players[player] = (to_move[0], to_move[1])
+            self.to_win -= 1
             self.state[2] = self.grid
             self.state[3] = self.players
+            self.state[4] = self.to_win
             return True
         return False
 
@@ -83,3 +85,14 @@ class State:
                     states = copy.deepcopy(State(self.state))
         return states
 
+    def __str__(self):
+        s = ''
+        for row in self.grid:
+            for cell in row:
+                s += str(cell) + " "
+            s += "\n"
+        return s
+
+    # stat1 < state2 => True or False
+    def __lt__(self, other):
+        return self.cost < other.cost
