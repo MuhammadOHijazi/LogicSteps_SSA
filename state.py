@@ -8,6 +8,7 @@ class State:
         self.columns = state[1]
         self.grid = state[2]
         self.players = state[3]
+        self.parent = ""
         self.cost = 1
         self.to_win = state[4]
 
@@ -40,8 +41,17 @@ class State:
     def isfinish(self):
         if self.to_win > 0:
             print("There should be", self.to_win, "moves To finish the game")
-            return False
+            check = True
+            for player in self.players:
+                if self.can_move(player[0], player[1]):
+                    check = False
+            if check:
+                print("There is no place you can go with your players\n"
+                      "sorry but you lost the level")
+                print("Your players in places\n", self.players)
+                return True
         else:
+            print("You Win Congrats")
             return True
 
     def can_move(self, x, y):
@@ -55,11 +65,11 @@ class State:
     # take the player that play and move
 
     def move(self, x, y, direction):
-        print("players list", self.players)
+        # print("players list", self.players)
         player = self.players.index((x, y))
         to_move = (x + 1, y) if direction == 'D' \
             else (x - 1, y) if direction == 'U' \
-            else (x, y + 1) if direction == 'R'\
+            else (x, y + 1) if direction == 'R' \
             else (x, y - 1) if direction == 'L' \
             else (x, y)
         cells = self.can_move(x, y)
@@ -82,7 +92,7 @@ class State:
             for direction in directions:
                 if new_state.move(player[0], player[1], direction):
                     states.append(new_state)
-                    states = copy.deepcopy(State(self.state))
+                    new_state = copy.deepcopy(State(self.state))
         return states
 
     def __str__(self):

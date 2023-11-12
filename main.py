@@ -1,5 +1,7 @@
-import state as stat
-import solo as solo
+from state import State
+from solo import UserPlayer
+from DFS import DFS
+from BFS import BFS
 
 print("Logic steps Games")
 print("Choose the way to solve the problem")
@@ -9,9 +11,16 @@ meth = input("Enter 1 to play the game lonly\n"
 match meth:
     case "1":
         print("Start play the Game by your self")
-        solo.play()
+        user_player = UserPlayer()
+        user_player.play()
     case "2":
         print("Solve the game by the Algorithms BFS")
+        algo = BFS()
+        algo.play()
+
     case "3":
         print("Solve the game by the  Algorithms DFS")
+        algo = DFS()
+        algo.play()
+
 
