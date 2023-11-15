@@ -1,10 +1,4 @@
-from state import State
-from levels import Levels
-
-
 class RecursiveDFS:
-    lev = Levels.level4
-    st = State(lev)
     visited = {}
 
     def play(self, state):
@@ -18,6 +12,7 @@ class RecursiveDFS:
         parent_key = str(current_state)
         print(current_state)
         if current_state.isfinish():
+            print("There should be", current_state.to_win, "moves To finish the game")
             if current_state.to_win > 0:
                 return
             path = []
@@ -29,6 +24,7 @@ class RecursiveDFS:
                 print(node)
                 print("---------------------------------------")
             print("path:", len(path), "\nstates:", counter)
+            print("You Win Congrats")
             return
         else:
             next_states = current_state.next_state()
@@ -40,8 +36,3 @@ class RecursiveDFS:
                     state.parent = parent_key
                     last_in = state
             self.play(last_in)
-
-
-
-
-

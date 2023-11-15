@@ -9,6 +9,7 @@ class State:
         self.grid = state[2]
         self.players = state[3]
         self.parent = ""
+
         self.cost = 1
         self.to_win = state[4]
 
@@ -31,27 +32,16 @@ class State:
             player = (player_rows, player_columns)
             self.players.append(player)
 
-    def winning(self, board):
-        self.to_win = 0
-        for i in range(0, len(board)):
-            for j in range(0, len(board[0])):
-                if board[i][j] != 0 and board[i][j] != -1:
-                    self.to_win += board[i][j]
+    # def winning(self, board):
+    #     for i in range(0, len(board)):
+    #         for j in range(0, len(board[0])):
+    #             if board[i][j] != 0 and board[i][j] != -1:
+    #                 self.to_win += board[i][j]
 
     def isfinish(self):
         if self.to_win > 0:
-            print("There should be", self.to_win, "moves To finish the game")
-            check = True
-            for player in self.players:
-                if self.can_move(player[0], player[1]):
-                    check = False
-            if check:
-                print("There is no place you can go with your players\n"
-                      "sorry but you lost the level")
-                print("Your players in places\n", self.players)
-                return True
+            return False
         else:
-            print("You Win Congrats")
             return True
 
     def can_move(self, x, y):
@@ -75,8 +65,8 @@ class State:
         cells = self.can_move(x, y)
         if to_move in cells:
             self.grid[to_move[0]][to_move[1]] -= 1
-            self.players[player] = (to_move[0], to_move[1])
             self.to_win -= 1
+            self.players[player] = (to_move[0], to_move[1])
             self.state[2] = self.grid
             self.state[3] = self.players
             self.state[4] = self.to_win

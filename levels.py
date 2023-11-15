@@ -14,7 +14,7 @@ class Levels:
     # creating level1
     # player in the 0
     level1_grid = ([0, 1, 1, 1])
-    num_rows_1 = len(level1_grid)
+    num_rows_1 = 1
     num_columns_1 = 4
     level1_psp = [(0, 0)]
     to_win_1 = 3
@@ -23,7 +23,7 @@ class Levels:
 
     # creating level 2
     level2_grid = ([1, 2, 2, 2, 1])
-    num_rows_2 = len(level2_grid)
+    num_rows_2 = 1
     num_columns_2 = 5
     level2_psp = [(0, 0)]
     to_win_2 = 8
@@ -96,7 +96,7 @@ class Levels:
     num_columns_8 = len(level8_grid[0])
     level8_psp = [(2, 1)]
     to_win_8 = 16
-    level8 = [num_rows_8, num_columns_8, level8_grid, level8_psp,to_win_8]
+    level8 = [num_rows_8, num_columns_8, level8_grid, level8_psp, to_win_8]
     levels.put(level8)
 
     # creating level 9
@@ -108,15 +108,15 @@ class Levels:
     num_columns_9 = len(level9_grid[0])
     level9_psp = [(1, 1), (2, 2)]
     to_win_9 = 9
-    level9 = [num_rows_9, num_columns_9, level9_grid, level9_psp,to_win_9]
+    level9 = [num_rows_9, num_columns_9, level9_grid, level9_psp, to_win_9]
     levels.put(level9)
 
     # creating level 10
     level10_grid = ([3, 2, 2],
                     [2, 2, 3])
-    num_rows_10 = len(level9_grid)
-    num_columns_10 = len(level9_grid[0])
+    num_rows_10 = len(level10_grid)
+    num_columns_10 = len(level10_grid[0])
     level10_psp = [(1, 0)]
     to_win_10 = 14
-    level10 = [num_rows_10, num_columns_10, level10_grid, level10_psp,to_win_10]
+    level10 = [num_rows_10, num_columns_10, level10_grid, level10_psp, to_win_10]
     levels.put(level10)

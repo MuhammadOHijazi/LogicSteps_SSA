@@ -29,7 +29,7 @@ match meth:
     case "4":
         print("Solve the game by the  Algorithms Recursive DFS")
         algo = RecursiveDFS()
-        lev = Levels.level8
+        lev = Levels.level3
         st = State(lev)
         algo.play(st)
 

@@ -29,19 +29,15 @@ class UserPlayer:
             match character:
                 case "R":
                     state.move(x, y, character)
-                    state.winning(state.grid)
                     check = state.isfinish()
                 case "L":
                     state.move(x, y, character)
-                    state.winning(state.grid)
                     check = state.isfinish()
                 case "U":
                     state.move(x, y, character)
-                    state.winning(state.grid)
                     check = state.isfinish()
                 case "D":
                     state.move(x, y, character)
-                    state.winning(state.grid)
                     check = state.isfinish()
                 case "q":
                     return
