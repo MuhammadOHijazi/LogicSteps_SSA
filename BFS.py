@@ -1,16 +1,19 @@
 from abc import ABC
-from Algo import Algo
+from Algo import Algo, is_stuck
 from state import State
 from levels import Levels
 
 
 class BFS(Algo, ABC):
-    lev = Levels.level4
+    lev = Levels.level8
     st = State(lev)
     visited = {}
 
-    def print_path(self, current_state):
+    def __init__(self):
+        self.parent_key = str(self.st)
         self.path = []
+
+    def print_path(self, current_state):
         temp_state = current_state
         while temp_state.parent != "":
             self.path.append(temp_state)  # win state -> root
@@ -18,18 +21,6 @@ class BFS(Algo, ABC):
         for node in self.path[::-1]:
             print(node)
             print("---------------------------------------")
-
-    # def is_Win(self, current_state):
-    #     self.check = True
-    #     for player in current_state.players:
-    #         if current_state.can_move(player[0], player[1]):
-    #             self.check = False
-    #     if self.check:
-    #         print("There should be", current_state.to_win, "moves To finish the game")
-    #         print("There is no place you can go with your players\n"
-    #               "sorry but you lost the level")
-    #         print("Your players in places\n", current_state.players)
-    #         return
 
     def play(self):
         queue = []
@@ -40,19 +31,22 @@ class BFS(Algo, ABC):
             # print(counter)
             current_state = queue.pop(0)
             self.visited[str(current_state)] = current_state
-            parent_key = str(current_state)
+            self.parent_key = str(current_state)
             # check if the current state is a win state
             if current_state.isfinish():
                 self.print_path(current_state)
-                for node in self.path[::-1]:
-                    print(node)
-                    print("---------------------------------------")
                 print("path:", len(self.path), "\nstates:", counter)
                 print("You Win Congrats")
                 return
+            elif is_stuck(current_state):
+                counter -= 1
+                print("You stuck in this state\n", current_state)
+                print(current_state.players)
+                print("---------------------------------------")
+                continue
             else:
                 next_states = current_state.next_state()
                 for state in next_states:
                     if self.visited.get((str(state)), -1) == -1:
                         queue.append(state)
-                        state.parent = parent_key
+                        state.parent = self.parent_key

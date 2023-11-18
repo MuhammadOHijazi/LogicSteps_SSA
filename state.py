@@ -32,12 +32,6 @@ class State:
             player = (player_rows, player_columns)
             self.players.append(player)
 
-    # def winning(self, board):
-    #     for i in range(0, len(board)):
-    #         for j in range(0, len(board[0])):
-    #             if board[i][j] != 0 and board[i][j] != -1:
-    #                 self.to_win += board[i][j]
-
     def isfinish(self):
         if self.to_win > 0:
             return False
