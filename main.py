@@ -1,3 +1,4 @@
+from UCS import UCS
 from state import State
 from solo import UserPlayer
 from DFS import DFS
@@ -10,7 +11,8 @@ print("Choose the way to solve the problem")
 meth = input("Enter 1 to play the game lonely\n"
              "Enter 2 to solve the problem using BFS algo\n"
              "Enter 3 to solve the problem using DFS algo\n"
-             "Enter 4 to solve the problem using DFS Recursively algo\n")
+             "Enter 4 to solve the problem using DFS Recursively algo\n"
+             "Enter 5 to solve the problem using UCS algo\n")
 match meth:
     case "1":
         print("Start play the Game by your self")
@@ -32,3 +34,8 @@ match meth:
         lev = Levels.level13
         st = State(lev)
         algo.play(st)
+
+    case "5":
+        algo = UCS()
+        algo.play()
+

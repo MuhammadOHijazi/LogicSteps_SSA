@@ -23,7 +23,7 @@ class RecursiveDFS:
             for node in path[::-1]:
                 print(node)
                 print("---------------------------------------")
-            print("path:", len(path), "\nstates:", counter)
+            print("path:", len(path))
             print("You Win Congrats")
             return
         else:
@@ -36,4 +36,4 @@ class RecursiveDFS:
                     state.parent = parent_key
                     last_in = state
             self.play(last_in)
-            # stack over flow on level 14
+

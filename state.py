@@ -9,9 +9,8 @@ class State:
         self.grid = state[2]
         self.players = state[3]
         self.parent = ""
-
-        self.cost = 1
         self.to_win = state[4]
+        self.cost = state[5]
 
     def start_state(self):
         # to Get the  grid from the user
@@ -66,6 +65,11 @@ class State:
             self.state[2] = self.grid
             self.state[3] = self.players
             self.state[4] = self.to_win
+            if direction == 'D' or direction == 'L':
+                self.cost += 2
+            elif direction == 'R' or direction == 'U':
+                self.cost += 1
+            self.state[5] = self.cost
             return True
         return False
 
