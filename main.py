@@ -7,8 +7,8 @@ from levels import Levels
 
 print("Logic steps Games")
 print("Choose the way to solve the problem")
-meth = input("Enter 1 to play the game lonly\n"
-             "Enter 2 to solve the porblem using BFS algo\n"
+meth = input("Enter 1 to play the game lonely\n"
+             "Enter 2 to solve the problem using BFS algo\n"
              "Enter 3 to solve the problem using DFS algo\n"
              "Enter 4 to solve the problem using DFS Recursively algo\n")
 match meth:
@@ -29,7 +29,6 @@ match meth:
     case "4":
         print("Solve the game by the  Algorithms Recursive DFS")
         algo = RecursiveDFS()
-        lev = Levels.level3
+        lev = Levels.level13
         st = State(lev)
         algo.play(st)
-

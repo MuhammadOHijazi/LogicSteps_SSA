@@ -1,5 +1,4 @@
 from abc import abstractmethod
-from state import State
 
 
 def is_stuck(current_state):

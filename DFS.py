@@ -6,7 +6,7 @@ from levels import Levels
 
 
 class DFS(Algo, ABC):
-    lev = Levels.level4
+    lev = Levels.level13
     st = State(lev)
     visited = {}
 
@@ -40,8 +40,8 @@ class DFS(Algo, ABC):
                 return
             elif is_stuck(current_state):
                 counter -= 1
-                print("You stuck in this state\n", current_state)
-                print(current_state.players)
+                # print("You stuck in this state\n", current_state)
+                # print(current_state.players)
                 continue
             else:
                 next_states = current_state.next_state()

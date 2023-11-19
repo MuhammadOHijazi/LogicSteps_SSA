@@ -5,7 +5,7 @@ from levels import Levels
 
 
 class BFS(Algo, ABC):
-    lev = Levels.level8
+    lev = Levels.level4
     st = State(lev)
     visited = {}
 
@@ -25,6 +25,7 @@ class BFS(Algo, ABC):
     def play(self):
         queue = []
         queue.append(self.st)
+        self.visited[str(self.st)] = self.st
         counter = 0
         while queue:
             counter += 1
@@ -50,3 +51,6 @@ class BFS(Algo, ABC):
                     if self.visited.get((str(state)), -1) == -1:
                         queue.append(state)
                         state.parent = self.parent_key
+
+                        self.visited[str(state)] = state
+                        self.parent_key = str(state)

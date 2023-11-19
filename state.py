@@ -43,7 +43,9 @@ class State:
         possible_moves = [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
         for j, k in possible_moves:
             if self.row > j >= 0 and self.columns > k >= 0 and self.grid[j][k] > 0:
-                cells.append((j, k))
+                # condtion to make sure that there is not two players at the same place
+                if (j, k) not in self.players:
+                    cells.append((j, k))
         return cells
 
     # take the player that play and move
@@ -68,7 +70,7 @@ class State:
         return False
 
     def next_state(self):
-        directions = ['R', 'L', 'U', 'D']
+        directions = ['R', 'U', 'L', 'D']
         states = []
         states.append(State(self.state))
         new_state = copy.deepcopy(State(self.state))

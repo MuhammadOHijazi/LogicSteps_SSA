@@ -120,3 +120,52 @@ class Levels:
     to_win_10 = 14
     level10 = [num_rows_10, num_columns_10, level10_grid, level10_psp, to_win_10]
     levels.put(level10)
+
+    # creating level 11
+    # there are two players
+    level11_grid = ([1, 1, 1, -1, -1],
+                    [2, 1, 2, 1, 1],
+                    [1, 1, 1, 1, 1])
+    num_rows_11 = len(level11_grid)
+    num_columns_11 = len(level11_grid[0])
+    level11_psp = [(0, 0), (1, 4)]
+    to_win_11 = 15
+    level11 = [num_rows_11, num_columns_11, level11_grid, level11_psp, to_win_11]
+    levels.put(level11)
+
+    # creating level 12
+    level12_grid = ([3, 3],
+                    [2, 2],
+                    [3, 3],
+                    [2, 2])
+    num_rows_12 = len(level12_grid)
+    num_columns_12 = len(level12_grid[0])
+    level12_psp = [(0, 0)]
+    to_win_12 = 20
+    level12 = [num_rows_12, num_columns_12, level12_grid, level12_psp, to_win_12]
+    levels.put(level12)
+
+    # creating level 13
+    # There are Two players
+    level13_grid = ([-1, -1, 1, -1],
+                    [2, 2, 1, -1],
+                    [2, 1, 2, 1],
+                    [1, -1, 2, 1])
+    num_rows_13 = len(level13_grid)
+    num_columns_13 = len(level13_grid[0])
+    level13_psp = [(1, 2), (2, 0)]
+    to_win_13 = 16
+    level13 = [num_rows_13, num_columns_13, level13_grid, level13_psp, to_win_13]
+    levels.put(level13)
+
+    # creating level 14
+    level14_grid = ([1, 1, 1, 1],
+                    [1, 1, 1, 1],
+                    [1, 1, 2, 1])
+    num_rows_14 = len(level14_grid)
+    num_columns_14 = len(level14_grid[0])
+    level14_psp = [(0, 1), (1, 3)]
+    to_win_14 = 13
+    level14 = [num_rows_14, num_columns_14, level14_grid, level14_psp, to_win_14]
+    levels.put(level14)
+
