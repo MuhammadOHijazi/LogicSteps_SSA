@@ -5,7 +5,7 @@ from levels import Levels
 
 
 class BFS(Algo, ABC):
-    lev = Levels.level14
+    lev = Levels.level13
     st = State(lev)
     visited = {}
 
