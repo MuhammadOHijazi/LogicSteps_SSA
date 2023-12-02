@@ -6,7 +6,7 @@ from levels import Levels
 
 
 class DFS(Algo, ABC):
-    lev = Levels.level1
+    lev = Levels.level14
     st = State(lev)
     visited = {}
 

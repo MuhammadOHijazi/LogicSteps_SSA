@@ -6,7 +6,7 @@ from levels import Levels
 
 
 class UCS(Algo, ABC):
-    lev = Levels.level13
+    lev = Levels.level14
     st = State(lev)
     visited = {}
 

@@ -1,39 +1,39 @@
-class RecursiveDFS:
+from abc import ABC
+from Algo import Algo
+
+
+class RecursiveDFS(Algo, ABC):
     visited = {}
 
+    def __init__(self):
+        self.path = []
+        self.next_states = []
+        self.counter = 0
+
+    def print_path(self, current_state):
+        temp_state = current_state
+        while temp_state.parent != "":
+            self.path.append(temp_state)  # win state -> root
+            temp_state = self.visited[temp_state.parent]
+        for node in self.path[::-1]:
+            print(node)
+            print("---------------------------------------")
+
     def play(self, state):
-        stack = []
-        stack.append(state)
-        counter = 0
-        if not stack:
-            return
-        current_state = stack.pop()
+        current_state = state
+        self.counter += 1
         self.visited[str(current_state)] = current_state
         parent_key = str(current_state)
-        print(current_state)
+        # check if the current state is a win state
         if current_state.isfinish():
-            print("There should be", current_state.to_win, "moves To finish the game")
-            if current_state.to_win > 0:
-                return
-            path = []
-            temp_state = current_state
-            while temp_state.parent != "":
-                path.append(temp_state)  # win state -> root
-                temp_state = self.visited[temp_state.parent]
-            for node in path[::-1]:
-                print(node)
-                print("---------------------------------------")
-            print("path:", len(path))
+            self.print_path(current_state)
+            print("path:", len(self.path), "\nstates:", self.counter)
             print("You Win Congrats")
             return
         else:
-            next_states = current_state.next_state()
-            last_in = next_states[-1]
-            for state in next_states:
+            self.next_states = current_state.next_state()
+            for state in self.next_states:
                 if self.visited.get((str(state)), -1) == -1:
-                    print(str(state))
-                    stack.append(state)
+                    self.next_states.append(state)
                     state.parent = parent_key
-                    last_in = state
-            self.play(last_in)
-
+                    self.play(state)

@@ -6,6 +6,9 @@ from BFS import BFS
 from recursive_DFS import RecursiveDFS
 from levels import Levels
 
+lev = Levels.level14
+st = State(lev)
+
 print("Logic steps Games")
 print("Choose the way to solve the problem")
 meth = input("Enter 1 to play the game lonely\n"
@@ -31,8 +34,6 @@ match meth:
     case "4":
         print("Solve the game by the  Algorithms Recursive DFS")
         algo = RecursiveDFS()
-        lev = Levels.level13
-        st = State(lev)
         algo.play(st)
 
     case "5":
